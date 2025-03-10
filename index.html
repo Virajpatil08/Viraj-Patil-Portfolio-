@@ -11,9 +11,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Viraj Patil Portfolio">
-	<meta name="author"
-		content="Welcome to my personal portfolio website! This project showcases my work and skills as a web developer. It is designed to be responsive and user-friendly, ensuring a great experience on various devices and screen sizes.">
+	<meta name="author" content="Viraj Patil">
+	<meta name="description" content="Viraj Patil - Frontend Developer | React.js, JavaScript, Tailwind CSS, Redux, Node.js | Passionate about building scalable and interactive web applications. Experienced in API integration, UI/UX design, and performance optimization.">
+	<meta name="keywords" content="Viraj Patil, Frontend Developer, React.js Developer, JavaScript Developer, Tailwind CSS, Redux, Web Development, UI/UX, API Integration, MERN Stack, Full Stack Developer, HTML, CSS, Node.js, SQL, Bitbucket, GitHub, 1XL Universe, Portfolio">
+	<meta name="robots" content="index, follow">
+	<meta property="og:title" content="Viraj Patil - Frontend Developer Portfolio">
+	<meta property="og:description" content="Experienced React.js Developer with 1.5+ years of expertise in building scalable, dynamic web applications. Skilled in JavaScript, Tailwind CSS, and API integrations.">
+	<meta property="og:image" content="https://virajpatil08.github.io/Viraj-Patil-Portfolio-/assets/profile-image.jpg">
+	<meta property="og:url" content="https://virajpatil08.github.io/Viraj-Patil-Portfolio-/">
+	<meta property="og:type" content="website">
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<!-- Google Fonts -->
@@ -353,7 +359,8 @@
 		<small class="copyright"> &copy; <a href="mailto:vrajpatil4444@gmail.com" target="_blank">Viraj
 				Patil</a></small>
 				<br><br>
-				<p class="text-lg">Live Visitors: <span id="count" class="font-bold text-yellow-400">0</span></p>
+				<p>Live Visitors: <span id="visitor-count">Loading...</span></p>
+
 
 		<br><br>
 		<ul class="social-list list-inline mx-auto  d-lg-block">
@@ -399,19 +406,21 @@
 
 
 	<script>
-        const countEl = document.getElementById("count");
-
-        function countVisits() {
-            fetch('https://api.countapi.xyz/update/laptop/mouse/?amount=1')
-                .then(response => response.json())
-                .then(data => {
-                    countEl.innerText = data.value;
-                })
-                .catch(error => console.error("Error fetching visitor count:", error));
-        }
-
-        countVisits();
-    </script>
+		const counterUrl = "https://api.countapi.xyz/hit/virajpatil-portfolio/visits";
+	
+		async function updateVisitorCount() {
+			try {
+				const response = await fetch(counterUrl);
+				const data = await response.json();
+				document.getElementById("visitor-count").textContent = data.value;
+			} catch (error) {
+				console.error("Error fetching visitor count:", error);
+				document.getElementById("visitor-count").textContent = "Error";
+			}
+		}
+	
+		updateVisitorCount();
+	</script>
 	<!-- Javascript -->
 	<script src="assets/plugins/popper.min.js"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
