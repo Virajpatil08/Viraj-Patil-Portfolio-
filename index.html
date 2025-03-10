@@ -352,6 +352,9 @@
 	<footer class="footer text-center">
 		<small class="copyright"> &copy; <a href="mailto:vrajpatil4444@gmail.com" target="_blank">Viraj
 				Patil</a></small>
+				<br><br>
+				<p class="text-lg">Live Visitors: <span id="count" class="font-bold text-yellow-400">0</span></p>
+
 		<br><br>
 		<ul class="social-list list-inline mx-auto  d-lg-block">
 			<li class="list-inline-item me-0 me-md-1 me-lg-2"><a href="https://twitter.com/vraj_patil_?s=09
@@ -367,6 +370,8 @@
 			<li class="list-inline-item me-0 me-md-1 me-lg-2"><a href="https://www.facebook.com/vraj.patil.1612
 						"><i class="fa-brands fa-facebook fa-fw"></i></a></li>
 		</ul><!--//social-list-->
+
+
 	</footer>
 
 	<!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
@@ -393,7 +398,20 @@
 
 
 
+	<script>
+        const countEl = document.getElementById("count");
 
+        function countVisits() {
+            fetch('https://api.countapi.xyz/update/laptop/mouse/?amount=1')
+                .then(response => response.json())
+                .then(data => {
+                    countEl.innerText = data.value;
+                })
+                .catch(error => console.error("Error fetching visitor count:", error));
+        }
+
+        countVisits();
+    </script>
 	<!-- Javascript -->
 	<script src="assets/plugins/popper.min.js"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
